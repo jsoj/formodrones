@@ -1,9 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    /* --- Light / Dark Theme Switcher --- */
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlElement = document.documentElement;
+
+    // Check saved theme or system preference
+    const savedTheme = localStorage.getItem('formodrones_theme');
+    if (savedTheme) {
+        htmlElement.setAttribute('data-theme', savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        htmlElement.setAttribute('data-theme', 'light');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('formodrones_theme', newTheme);
+        });
+    }
+
     /* --- Navbar Scroll Effect --- */
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 40) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
@@ -19,52 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.toggle('active');
         });
 
-        // Close mobile menu on click
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
     }
-
-    /* --- Stats Counter Animation --- */
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let animated = false;
-
-    const animateStats = () => {
-        const heroSection = document.getElementById('hero');
-        if (!heroSection) return;
-        const rect = heroSection.getBoundingClientRect();
-
-        if (rect.top <= window.innerHeight && !animated) {
-            animated = true;
-            statNumbers.forEach(stat => {
-                const target = parseFloat(stat.getAttribute('data-target'));
-                const isDecimal = target % 1 !== 0;
-                const duration = 2000;
-                const startTime = performance.now();
-
-                const updateCount = (currentTime) => {
-                    const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / duration, 1);
-                    const currentVal = progress * target;
-
-                    stat.textContent = isDecimal ? currentVal.toFixed(1) : Math.floor(currentVal);
-
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCount);
-                    } else {
-                        stat.textContent = target;
-                    }
-                };
-
-                requestAnimationFrame(updateCount);
-            });
-        }
-    };
-
-    window.addEventListener('scroll', animateStats);
-    animateStats(); // Initial check
 
     /* --- Interactive Budget Calculator --- */
     const serviceType = document.getElementById('service-type');
@@ -75,34 +56,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendWhatsappCalc = document.getElementById('send-whatsapp-calc');
 
     const addRtk = document.getElementById('add-rtk');
-    const addVideo = document.getElementById('add-video');
+    const addRelatorio = document.getElementById('add-relatorio');
     const addUrgent = document.getElementById('add-urgent');
 
     const calculateBudget = () => {
+        if (!serviceType || !areaSize) return;
+
         const type = serviceType.value;
         const hectares = parseInt(areaSize.value);
         let basePrice = 0;
 
-        if (type === 'agri') {
+        if (type === 'pulverizacao') {
+            areaGroup.style.display = 'block';
+            areaVal.textContent = `${hectares} ha`;
+            basePrice = Math.max(600, hectares * 15);
+        } else if (type === 'agri') {
             areaGroup.style.display = 'block';
             areaVal.textContent = `${hectares} ha`;
             basePrice = Math.max(500, hectares * 12);
         } else if (type === 'topografia') {
             areaGroup.style.display = 'block';
             areaVal.textContent = `${hectares} ha`;
-            basePrice = Math.max(700, hectares * 18);
+            basePrice = Math.max(750, hectares * 18);
         } else if (type === 'imovel') {
             areaGroup.style.display = 'none';
             basePrice = 850;
-        } else if (type === 'obras') {
-            areaGroup.style.display = 'none';
-            basePrice = 1800;
         }
 
         // Add-ons
         let extras = 0;
         if (addRtk && addRtk.checked) extras += parseInt(addRtk.value);
-        if (addVideo && addVideo.checked) extras += parseInt(addVideo.value);
+        if (addRelatorio && addRelatorio.checked) extras += parseInt(addRelatorio.value);
         if (addUrgent && addUrgent.checked) extras += parseInt(addUrgent.value);
 
         const totalPrice = Math.round(basePrice + extras);
@@ -113,45 +97,39 @@ document.addEventListener('DOMContentLoaded', () => {
         serviceType.addEventListener('change', calculateBudget);
         areaSize.addEventListener('input', calculateBudget);
         if (addRtk) addRtk.addEventListener('change', calculateBudget);
-        if (addVideo) addVideo.addEventListener('change', calculateBudget);
+        if (addRelatorio) addRelatorio.addEventListener('change', calculateBudget);
         if (addUrgent) addUrgent.addEventListener('change', calculateBudget);
 
-        calculateBudget(); // Initial calculation
+        calculateBudget();
     }
 
-    // Send budget to WhatsApp
+    // Send budget simulation to WhatsApp (Marco Antonio)
     if (sendWhatsappCalc) {
         sendWhatsappCalc.addEventListener('click', () => {
             const typeText = serviceType.options[serviceType.selectedIndex].text;
-            const areaText = serviceType.value === 'agri' || serviceType.value === 'topografia' ? `Área: ${areaSize.value} Hectares\n` : '';
+            const areaText = serviceType.value !== 'imovel' ? `Área: ${areaSize.value} Hectares\n` : '';
             const price = calculatedPrice.textContent;
 
             let message = `*Simulação de Orçamento - FormoDrones*\n\n`;
-            message += `*Serviço:* ${typeText}\n`;
+            message += `*Cliente:* Contato via Website\n`;
+            message += `*Operação:* ${typeText}\n`;
             if (areaText) message += `*${areaText}*`;
-            message += `*Valor Estimado no Site:* R$ ${price}\n\n`;
-            message += `Gostaria de agendar uma consulta técnica para confirmar a viabilidade!`;
+            message += `*Investimento Estimado:* R$ ${price}\n\n`;
+            message += `Olá Marco Antonio! Gostaria de agendar uma consulta técnica para confirmar os detalhes da minha área.`;
 
             const encodedMsg = encodeURIComponent(message);
-            window.open(`https://wa.me/5561999999999?text=${encodedMsg}`, '_blank');
+            window.open(`https://wa.me/5561999757738?text=${encodedMsg}`, '_blank');
         });
     }
 
     /* --- Accordion FAQ --- */
     const accordionItems = document.querySelectorAll('.accordion-item');
-
     accordionItems.forEach(item => {
         const header = item.querySelector('.accordion-header');
         header.addEventListener('click', () => {
             const isOpen = item.classList.contains('active');
-
-            // Close all items
             accordionItems.forEach(i => i.classList.remove('active'));
-
-            // Toggle clicked item
-            if (!isOpen) {
-                item.classList.add('active');
-            }
+            if (!isOpen) item.classList.add('active');
         });
     });
 
@@ -170,10 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
             message += `*Nome:* ${name}\n`;
             message += `*Telefone/WhatsApp:* ${phone}\n`;
             message += `*Interesse:* ${interest}\n`;
-            message += `*Mensagem:* ${msg}`;
+            message += `*Mensagem:* ${msg}\n\n`;
+            message += `Olá Marco Antonio, aguardo seu retorno!`;
 
             const encodedMsg = encodeURIComponent(message);
-            window.open(`https://wa.me/5561999999999?text=${encodedMsg}`, '_blank');
+            window.open(`https://wa.me/5561999757738?text=${encodedMsg}`, '_blank');
         });
     }
 });
