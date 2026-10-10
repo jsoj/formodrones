@@ -44,7 +44,6 @@
             <nav class="nav-links" id="nav-links">
                 <a href="#servicos" class="nav-link">Serviços</a>
                 <a href="#pilares" class="nav-link">Benefícios</a>
-                <a href="#calculadora" class="nav-link">Calculadora</a>
                 <a href="#frota" class="nav-link">Frota</a>
                 <a href="#faq" class="nav-link">FAQ</a>
                 <a href="#contato" class="nav-link">Contato</a>
@@ -57,8 +56,8 @@
                     <i data-lucide="moon" class="moon-icon"></i>
                 </button>
 
-                <a href="https://wa.me/5561999757738?text=Ol%C3%A1%20Marco%20Antonio!%20Vim%20pelo%20site%20da%20FormoDrones%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn btn-primary btn-glow">
-                    <i data-lucide="message-square"></i> WhatsApp (61) 99975-7738
+                <a href="#contato" class="btn btn-primary btn-glow">
+                    <i data-lucide="message-square"></i> Fale Conosco
                 </a>
                 <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir Menu">
                     <i data-lucide="menu"></i>
@@ -77,23 +76,26 @@
                 </div>
                 <h1>Pulverização & Dispersão Agrícola com Drones</h1>
                 <p class="hero-description">
-                    Liderado por <strong>Marco Antonio</strong> em Formosa-GO. Tecnologia avançada de aplicação com <strong>Zero Amassamento</strong>, máxima precisão e rentabilidade comprovada para sua lavoura.
+                    Atendimento especializado em Formosa-GO e região por <strong>Marco Antonio</strong> e <strong>Joao Marcello</strong>. Tecnologia avançada de aplicação com <strong>Zero Amassamento</strong>, máxima precisão e rentabilidade comprovada para sua lavoura.
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://wa.me/5561999757738?text=Ol%C3%A1%20Marco%20Antonio!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20pulveriza%C3%A7%C3%A3o/mapeamento." target="_blank" class="btn btn-primary btn-lg btn-glow">
+                    <a href="https://wa.me/5561999757738?text=Ol%C3%A1%20Marco%20Antonio!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20de%20pulveriza%C3%A7%C3%A3o/mapeamento." target="_blank" class="btn btn-primary btn-lg btn-glow">
                         <i data-lucide="message-circle"></i> Falar com Marco Antonio
                     </a>
-                    <a href="#calculadora" class="btn btn-outline btn-lg">
-                        <i data-lucide="calculator"></i> Simular Orçamento
+                    <a href="https://wa.me/5561996307456?text=Ol%C3%A1%20Joao%20Marcello!%20Gostaria%20de%20informa%C3%A7%C3%B5es%20de%20pulveriza%C3%A7%C3%A3o/mapeamento." target="_blank" class="btn btn-outline btn-lg">
+                        <i data-lucide="message-circle"></i> Falar com Joao Marcello
                     </a>
                 </div>
                 
                 <div class="hero-contact-strip">
                     <div class="c-strip-item">
-                        <i data-lucide="phone"></i> (61) 99975-7738
+                        <i data-lucide="phone"></i> Marco: (61) 99975-7738
                     </div>
                     <div class="c-strip-item">
-                        <i data-lucide="mail"></i> marcoantgpires@gmail.com
+                        <i data-lucide="phone"></i> Joao: (61) 99630-7456
+                    </div>
+                    <div class="c-strip-item">
+                        <i data-lucide="mail"></i> formodrones@gmail.com
                     </div>
                     <div class="c-strip-item">
                         <i data-lucide="instagram"></i> @formodrones
@@ -230,67 +232,7 @@
         </div>
     </section>
 
-    <!-- Interactive Budget Calculator -->
-    <section class="calculator-section section-padding" id="calculadora">
-        <div class="container">
-            <div class="calculator-card glass-panel">
-                <div class="calc-header">
-                    <h2><i data-lucide="calculator"></i> Simule o Orçamento da sua Operação</h2>
-                    <p>Calcule uma estimativa instantânea para pulverização, dispersão ou mapeamento aéreo.</p>
-                </div>
 
-                <div class="calc-grid">
-                    <div class="calc-inputs">
-                        <div class="form-group">
-                            <label for="service-type">Tipo de Operação:</label>
-                            <select id="service-type" class="form-control">
-                                <option value="pulverizacao">Pulverização / Dispersão Agrícola (Por Hectare)</option>
-                                <option value="agri">Mapeamento Multiespectral / NDVI (Por Hectare)</option>
-                                <option value="topografia">Aerofotogrametria & Topografia 3D (Por Hectare)</option>
-                                <option value="imovel">Foto & Filmagem Imobiliária (Por Projeto)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group" id="area-group">
-                            <label for="area-size">Área da Propriedade: <strong id="area-val" class="highlight-gold">50 ha</strong></label>
-                            <input type="range" id="area-size" min="10" max="1000" step="10" value="50" class="range-slider">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Opções Adicionais:</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="add-rtk" value="150">
-                                    <span>Georreferenciamento de Alta Precisão RTK</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="add-relatorio" value="200">
-                                    <span>Relatório Agronômico Detalhado</span>
-                                </label>
-                                <label class="checkbox-label">
-                                    <input type="checkbox" id="add-urgent" value="250">
-                                    <span>Atendimento Prioritário (Até 24h)</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="calc-result-box">
-                        <span class="calc-badge">Investimento Estimado</span>
-                        <div class="price-display">
-                            <span class="currency">R$</span>
-                            <span id="calculated-price">750</span>
-                        </div>
-                        <p class="price-note">*Valores base subjectos a avaliação da área em Formosa-GO e região.</p>
-
-                        <button id="send-whatsapp-calc" class="btn btn-primary btn-block btn-glow">
-                            <i data-lucide="send"></i> Enviar Simulação para Marco Antonio
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Drone Fleet Section -->
     <section class="fleet section-padding" id="frota">
@@ -304,16 +246,16 @@
             <div class="fleet-grid">
                 <div class="fleet-card glass-panel">
                     <div class="fleet-icon"><i data-lucide="plane"></i></div>
-                    <h3>DJI Agras T40 / T30</h3>
-                    <p>Drones agrícolas de altíssima produtividade para pulverização e dispersão de granulados/sementes em grandes extensões.</p>
-                    <span class="fleet-spec"><i data-lucide="check"></i> Carga útil de até 40kg / 50L</span>
+                    <h3>DJI Agras T70P / T55</h3>
+                    <p>Drones agrícolas de altíssima produtividade e capacidade para pulverização e dispersão de granulados/sementes em grandes extensões.</p>
+                    <span class="fleet-spec"><i data-lucide="check"></i> Alta capacidade de carga & vazão otimizada</span>
                 </div>
 
                 <div class="fleet-card glass-panel">
                     <div class="fleet-icon"><i data-lucide="scan-line"></i></div>
-                    <h3>DJI Mavic 3 Enterprise / Multispectral</h3>
-                    <p>Equipado com módulo RTK e câmeras multiespectrais para análise precisa do índice de vegetação da lavoura.</p>
-                    <span class="fleet-spec"><i data-lucide="check"></i> Sensores NDVI/NDRE + RTK</span>
+                    <h3>Controle DJI para Mapeamento</h3>
+                    <p>Estação de controle avançada com planejamento de missão automatizado, conexão RTK e telemetria de alta precisão para mapeamento.</p>
+                    <span class="fleet-spec"><i data-lucide="check"></i> Precisão RTK & Planejamento de Rotas</span>
                 </div>
 
                 <div class="fleet-card glass-panel">
@@ -367,11 +309,11 @@
 
                 <div class="accordion-item">
                     <button class="accordion-header">
-                        <span>Como posso entrar em contato direto com o proprietário?</span>
+                        <span>Como posso entrar em contato direto com a equipe?</span>
                         <i data-lucide="chevron-down"></i>
                     </button>
                     <div class="accordion-content">
-                        <p>Você pode falar diretamente com Marco Antonio pelo telefone/WhatsApp <strong>(61) 99975-7738</strong> ou pelo e-mail <strong>marcoantgpires@gmail.com</strong>.</p>
+                        <p>Você pode falar diretamente com nossa equipe técnica: <strong>Marco Antonio</strong> pelo WhatsApp <strong>(61) 99975-7738</strong>, <strong>Joao Marcello</strong> pelo WhatsApp <strong>(61) 99630-7456</strong> ou através do e-mail oficial <strong>formodrones@gmail.com</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -384,31 +326,31 @@
             <div class="contact-grid">
                 <div class="contact-info">
                     <span class="section-subtitle">Contato Direto</span>
-                    <h2>Fale com Marco Antonio</h2>
+                    <h2>Fale com Nossa Equipe</h2>
                     <p>Solicite uma visita técnica ou tire dúvidas sobre a melhor solução para sua lavoura ou propriedade.</p>
 
                     <div class="info-list">
                         <div class="info-item">
                             <div class="info-icon-box"><i data-lucide="user"></i></div>
                             <div>
-                                <strong>Proprietário & Responsável Técnico</strong>
-                                <p>Marco Antonio (Marco Antonio G. Pires)</p>
+                                <strong>Marco Antonio</strong>
+                                <p><a href="https://wa.me/5561999757738" target="_blank"><i data-lucide="phone"></i> (61) 99975-7738</a></p>
                             </div>
                         </div>
 
                         <div class="info-item">
-                            <div class="info-icon-box"><i data-lucide="phone"></i></div>
+                            <div class="info-icon-box"><i data-lucide="user"></i></div>
                             <div>
-                                <strong>Telefone / WhatsApp</strong>
-                                <p><a href="https://wa.me/5561999757738" target="_blank">(61) 99975-7738</a></p>
+                                <strong>Joao Marcello</strong>
+                                <p><a href="https://wa.me/5561996307456" target="_blank"><i data-lucide="phone"></i> (61) 99630-7456</a></p>
                             </div>
                         </div>
 
                         <div class="info-item">
                             <div class="info-icon-box"><i data-lucide="mail"></i></div>
                             <div>
-                                <strong>E-mail</strong>
-                                <p><a href="mailto:marcoantgpires@gmail.com">marcoantgpires@gmail.com</a></p>
+                                <strong>E-mail Oficial</strong>
+                                <p><a href="mailto:formodrones@gmail.com">formodrones@gmail.com</a></p>
                             </div>
                         </div>
 
@@ -431,7 +373,7 @@
                 </div>
 
                 <div class="contact-form-wrapper glass-panel">
-                    <h3>Enviar Mensagem</h3>
+                    <h3>Enviar Mensagem via WhatsApp</h3>
                     <form id="contact-form">
                         <div class="form-group">
                             <input type="text" id="contact-name" placeholder="Seu Nome Completo" required class="form-control">
@@ -440,9 +382,15 @@
                             <input type="tel" id="contact-phone" placeholder="Seu Telefone/WhatsApp" required class="form-control">
                         </div>
                         <div class="form-group">
+                            <select id="contact-contact-to" class="form-control">
+                                <option value="marco">Falar com Marco Antonio - (61) 99975-7738</option>
+                                <option value="joao">Falar com Joao Marcello - (61) 99630-7456</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <select id="contact-interest" class="form-control">
                                 <option value="Pulverização Agrícola">Pulverização / Dispersão Agrícola</option>
-                                <option value="Mapeamento e Saude da Lavoura">Mapeamento & Saúde da Lavoura (NDVI)</option>
+                                <option value="Mapeamento e Saude da Lavoura">Mapeamento & Saúde da Lavoura</option>
                                 <option value="Topografia 3D">Aerofotogrametria / Topografia 3D</option>
                                 <option value="Fotos e Vídeos">Fotos e Vídeos Aéreos</option>
                             </select>
@@ -451,7 +399,7 @@
                             <textarea id="contact-msg" rows="4" placeholder="Descreva os detalhes da sua propriedade ou necessidade..." required class="form-control"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block btn-glow">
-                            <i data-lucide="send"></i> Falar com Marco Antonio no WhatsApp
+                            <i data-lucide="send"></i> Iniciar Conversa no WhatsApp
                         </button>
                     </form>
                 </div>
@@ -468,7 +416,8 @@
                     <span>FORMO<span class="highlight">DRONES</span></span>
                 </a>
                 <p>Pulverização, Dispersão Agrícola e Mapeamento Aéreo em Formosa-GO.</p>
-                <p class="footer-owner"><strong>Proprietário:</strong> Marco Antonio | Tel: (61) 99975-7738</p>
+                <p class="footer-owner"><strong>Equipe:</strong> Marco Antonio (61) 99975-7738 | Joao Marcello (61) 99630-7456</p>
+                <p class="footer-owner"><strong>E-mail:</strong> formodrones@gmail.com</p>
             </div>
             <div class="footer-copy">
                 <p>&copy; <span id="year"></span> FormoDrones - Decole com Produtividade. Todos os direitos reservados.</p>
