@@ -66,13 +66,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const name = document.getElementById('contact-name').value;
             const phone = document.getElementById('contact-phone').value;
-            const target = document.getElementById('contact-contact-to')?.value || 'marco';
+            const target = document.getElementById('contact-contact-to')?.value || 'comercial';
             const interest = document.getElementById('contact-interest').value;
             const msg = document.getElementById('contact-msg').value;
 
-            const isJoao = target === 'joao';
-            const targetName = isJoao ? 'Joao Marcello' : 'Marco Antonio';
-            const targetPhone = isJoao ? '5561996307456' : '5561999757738';
+            let targetName = 'Contato Comercial';
+            let targetPhone = '5561999995539';
+
+            if (target === 'joao') {
+                targetName = 'Joao Marcello';
+                targetPhone = '5561996307456';
+            } else if (target === 'marco') {
+                targetName = 'Marco Antonio';
+                targetPhone = '5561999757738';
+            }
 
             let message = `*Nova Mensagem pelo Site - FormoDrones*\n\n`;
             message += `*Nome:* ${name}\n`;
